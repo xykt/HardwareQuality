@@ -1277,7 +1277,7 @@ done < <(sensors 2>/dev/null|awk '
                     /Core [0-9]+:|Package id/ {
                         if (match($0, /\+[0-9.]+°C/)) {
                             t=$0
-                            sub(/.*\+/,"",t)
+                            sub(/^[^+]*\+/,"",t)
                             sub(/°C.*/,"",t)
                             print int(t)
                         }
